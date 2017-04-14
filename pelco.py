@@ -63,6 +63,12 @@ class pelco_options(object):
         self.__zoom_wide = zoom_wide
     zoom_wide = property(get_zoom_wide, set_zoom_wide)
     
+    def get_zoom_tele(self):
+        return self.__zoom_tele
+    def set_zoom_tele(self, zoom_tele):
+        self.__zoom_tele = zoom_tele
+    zoom_tele = property(get_zoom_tele, set_zoom_tele)
+    
     def get_tilt_down(self):
         return self.__tilt_down
     def set_tilt_down(self, tilt_down):
@@ -107,7 +113,7 @@ def pelcod(camera, camera_options, pan_speed, tilt_speed):
     command2 += camera_options.tilt_up*8
     command2 += camera_options.pan_left*4
     command2 += camera_options.pan_right*2
-    command2 += camera_options.0*1
+    command2 += 0*1
     
     checksum = (camera + command1 + command2 + pan_speed + tilt_speed) % 256
     
